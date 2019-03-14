@@ -140,7 +140,7 @@ module ``02: About Binding`` =
         let c = a + 4
         let a = a + a
         a |> should equal 42
-        b |> should equal 12
+        b |> should equal 11
         c |> should equal 25
 
     (*
@@ -181,35 +181,36 @@ module ``02: About Binding`` =
 
     [<Test>]
     let ``08 An identifier pattern will match anything`` () =
-        let x = __ // replace with an integer
-        let y = __ // replace with a string
-        let z = __ // replace with anything else!
+        let x = 6 // replace with an integer
+        let y = "okay" // replace with a string
+        let z = () // replace with anything else!
         x |> should be ofType<int>
         y |> should be ofType<string>
 
     [<Test>]
     let ``09 A wildcard pattern will match anything`` () =
-        let _ = __ // replace with an integer
-        let _ = __ // replace with a string
-        let _ = __ // replace with anything else!
+        let _ = 6 // replace with an integer
+        let _ = "alright" // replace with a string
+        let _ = 'c' // replace with anything else!
         ()
 
     [<Test>]
     let ``10 Constant patterns succeed if both sides match`` () =
-        let 900 = __
-        let "Can't win all the time" = __
+        let 900 = 900
+        let "Can't win all the time" = "Can't win all the time"
         () // eh? what's this funny thing? It's called "unit", and you'll learn more about it in AboutUnit.fs later on.
 
     [<Test>]
     let ``11 Constant patterns fail if the sides don't match exactly`` () =
         (fun () ->
-            let "FILL ME IN" = FILL__ME_IN
+            let "16" = "16"
             ()
         ) |> should throw typeof<MatchFailureException>
+        //wont compile without fixing the error i know it should be 16 not "16" on the right
 
     [<Test>]
     let ``12 Or patterns succeed if any pattern matches`` () =
-        let a | a = __
-        let 7 | 13 | 2 = 3 + __
-        let 'x' | _ | 'p' = __
+        let a | a = 'a'
+        let 7 | 13 | 2 = 3 + 4
+        let 'x' | _ | 'p' = 'c'
         ()
