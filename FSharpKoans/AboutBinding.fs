@@ -204,9 +204,10 @@ module ``02: About Binding`` =
     let ``11 Constant patterns fail if the sides don't match exactly`` () =
         (fun () ->
             let "16" = "16"
+            //Wont compile without fixing the error i know it should be 16 not "16" on the right
             ()
         ) |> should throw typeof<MatchFailureException>
-        //wont compile without fixing the error i know it should be 16 not "16" on the right
+        
 
     [<Test>]
     let ``12 Or patterns succeed if any pattern matches`` () =
