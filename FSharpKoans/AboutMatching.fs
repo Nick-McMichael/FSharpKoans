@@ -68,6 +68,7 @@ module ``04: Match expressions`` =
             |3 -> "Joey"
             |8 -> "Bingo"
             |11|15 -> "Kelvin"
+            |_ -> failwith "Invalid input"
         mapper 3 |> should equal "Joey"
         mapper 8 |> should equal "Bingo"
         mapper 11 |> should equal "Kelvin"
